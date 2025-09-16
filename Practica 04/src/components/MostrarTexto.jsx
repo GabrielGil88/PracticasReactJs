@@ -6,7 +6,7 @@ export default function MostrarTexto() {
     const [visible, setVisible] = useState(true);
 
     return (
-        <div style={{textAlign: 'center', marginTop: '20px'}}>
+        <div style={{justifyContent:'center', alignContent: 'center', marginTop: '20px'}}>
             <button style={{backgroundColor: "#bb23aa"}} onClick={() => setVisible(!visible)}>
                 {visible ? "Ocultar": "Mostrar"}
             </button>
