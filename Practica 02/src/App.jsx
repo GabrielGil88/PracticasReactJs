@@ -16,8 +16,7 @@ function App() {
           titulo="Oferta especial" 
           descripcion="Este es el primer producto. 20% de descuento en todos los productos." 
         />
-      </div>
-      
+      </div>      
     </div>
   )
 }
