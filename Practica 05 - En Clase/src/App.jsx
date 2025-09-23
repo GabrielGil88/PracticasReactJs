@@ -1,6 +1,7 @@
 import  Saludo  from './components/Saludo.jsx'
 import Usuario from './components/Usuario.jsx'
 import Boton  from './components/Boton.jsx'
+import DragonBall from './components/DragonBall.jsx'
 
 
 function App() {
@@ -21,6 +22,10 @@ function App() {
       <Usuario nombre="Carlos" edad={27} />
 
       <Boton texto="Ingresar" onClick={mostrarAlerta} />
+
+      <hr />
+
+      <DragonBall />
     </div>
   )
 }
