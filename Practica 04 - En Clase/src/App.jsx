@@ -4,6 +4,8 @@ import Contador from './components/Contador.jsx';
 import BotonClick from './events/BotonClick.jsx';
 import CajaMouse from './events/CajaMouse.jsx';
 
+import FormularioControlado from './forms/FormularioControlado.jsx';
+
 function App() {
 
   return (
@@ -19,6 +21,9 @@ function App() {
       <hr />
       <h2>Ejemplo Nro 4</h2>
       <CajaMouse /> 
+      <hr />
+      <h2>Ejemplo Nro 5</h2>
+      <FormularioControlado />
     </div>
   );
 }

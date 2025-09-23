@@ -23,6 +23,7 @@ export default function FormularioControlado() {
         <div>
             <h2>Formulario Controlado</h2>
             <form onSubmit={handleSubmit}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '5px'}}>
                 <label>
                     Nombre:
                     <input 
@@ -35,7 +36,7 @@ export default function FormularioControlado() {
                 </label>
                 <br />
                 <label>
-                    Provincia:
+                    Provincia: 
                     <select 
                         value={provincia}
                         onChange={(e) => setProvincia(e.target.value)}
@@ -58,7 +59,7 @@ export default function FormularioControlado() {
                         required
                     />
                 </label>
-
+                </div>
                 <button type="submit"> Enviar </button>
             </form>
         </div>
