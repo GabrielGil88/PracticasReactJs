@@ -1,59 +1,52 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import AuthContext from "./AuthContext";
-import { Form, Button, Container, Row, Col, Card } from 'react-bootstrap';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 
-const login = () => {
-    const { login } = useAuth();
-    const navigate = useNavigate();
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+const Login = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    const success = login(username, password);
+    if (success) {
+      navigate('/dashboard');
+    } else {
+      setError('Usuario o contraseña incorrectos');
+    }
+  };
 
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const success = login(username, password);
-
-
-        if (success) {
-            navigate("/dashboard");
-        }
-        else {
-            setError("Usuario o contraseña incorrectos");
-        }
-    };
-
-    return (
-        <Container className="seccion">
-            <Row className="w-100 justify-content-center">
-                <Col md={8} lg={6} xl={4}>
-                    <Card className="shadow-lg border-0 rounded-4 p-3">
-                        <Card.Body>
-                            <h2 className="text-center mb-4">Iniciar Sesión</h2>
-                            <Form onSubmit={handleSubmit}>
-                                <Form.Group className="mb-4" controlId="formUsername">
-                                    <Form.Label>Usuario</Form.Label>
-                                    <Form.Control type="text" placeholder="Ingrese su usuario" required />
-                                </Form.Group>
-
-                                <Form.Group className="mb-4" controlId="formPassword">
-                                    <Form.Label>Contraseña</Form.Label>
-                                    <Form.Control type="password" placeholder="Ingrese su contraseña" required />
-                                </Form.Group>
-                                <Button className="btn-primario w-100 my-3">
-                                    Ingresar
-                                </Button>
-                            </Form>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
-        </Container>
-    );
+  return (
+    <div className="container mt-5">
+      <h2>Iniciar Sesión</h2>
+      <form onSubmit={handleSubmit} className="mt-3">
+        <div className="mb-3">
+          <label className="form-label">Usuario</label>
+          <input
+            type="text"
+            className="form-control"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Contraseña</label>
+          <input
+            type="password"
+            className="form-control"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">Ingresar</button>
+        {error && <div className="alert alert-danger mt-3">{error}</div>}
+      </form>
+    </div>
+  );
 };
 
-export default login;
+export default Login;
